@@ -839,19 +839,12 @@ add         # pop the two value on the top of the stack and push the result
 Let's see what each instruction does to the stack:
 |Top of Stack|
 |-|
-|-|
-|-|
-|-|
-|-|
 
 `ldconst 0`: Load constant from index 0 in the constant pool. Let's assume the constant at index 0 is `34`
 
 |Top of Stack|
 |-|
 |34|
-|-|
-|-|
-|-|
 
 `ldconst 1`: Load constant from index 1 in the constant pool. Let's assume the constant at index 1 is `35`
 
@@ -859,17 +852,12 @@ Let's see what each instruction does to the stack:
 |-|
 |35|
 |34|
-|-|
-|-|
 
 `add`: Pop the two values on the top of the stack and push the result.
 
 |Top of Stack|
 |-|
 |69|
-|-|
-|-|
-|-|
 
 Hopefully, that example gave you some insight on how the vm works. Now that we've gotten the basic idea, let's start writing the bytecode generator.
 ### Part Four: Code Generation <a name="code-generation"></a>
@@ -888,18 +876,18 @@ class Instruction(Enum):
     ret = auto()
 ```
 Here is what each instruction will do:
-|Instruction|Operation|
-|-|-|
-|ldconst (*i*)|Pushes constant at index *i* from the constant pool onto the stack.|
-|ldloc (*i*)|Pushes the value of the local variable at index *i* from the local variable table onto the stack.|
-|ldarg (*i*)|Pushes the argument *i* from the argument table onto the stack.|
-|stloc (*i*)|Stores the value on the top of the stack into the local variable table at index *i*.|
-|call (*i*)|Calls function *i* from the list of functions.|
-|add|Pops the two values on the top of the stack and pushes the sum.|
-|sub|Pops the two values on the top of the stack and pushes the difference.|
-|mul|Pops the two values on the top of the stack and pushes the product.|
-|div|Pops the two values on the top of the stack and pushes the quotient.|
-|ret|Returns from the function that is currently executing.|
+| Instruction | Operation |
+|-------------|-------------------------------------------------------------------|
+| ldconst (*i*) | Pushes constant at index *i* from the constant pool onto the stack. |
+| ldloc (*i*) | Pushes the value of the local variable at index *i* from the local variable table onto the stack. |
+| ldarg (*i*) | Pushes the argument *i* from the argument table onto the stack. |
+| stloc (*i*) | Stores the value on the top of the stack into the local variable table at index *i*. |
+| call (*i*) | Calls function *i* from the list of functions. |
+| add | Pops the two values on the top of the stack and pushes the sum. |
+| sub | Pops the two values on the top of the stack and pushes the difference. |
+| mul | Pops the two values on the top of the stack and pushes the product. |
+| div | Pops the two values on the top of the stack and pushes the quotient. |
+| ret | Returns from the function that is currently executing. |
 
 Now we need to define our `RuntimeConstant` class, which is what `ldconst` will need to operate.
 ```python
