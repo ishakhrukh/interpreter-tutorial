@@ -4,14 +4,14 @@
 By Ibrahim Shakhrukh
 
 ### Table of contents
-1. [Introduction](https://github.com/ishakhrukh/interpreter-tutorial/edit/gh-pages/index.md#introduction)
-2. [The Interpreter](https://github.com/ishakhrukh/interpreter-tutorial/edit/gh-pages/index.md#the-interpreter)
-3. [Getting Starting](https://github.com/ishakhrukh/interpreter-tutorial/edit/gh-pages/index.md#getting-started)
-4. [Part One: The Tokenizer](https://github.com/ishakhrukh/interpreter-tutorial/edit/gh-pages/index.md#tokenizer)
-5. [Part Two: The Parser](https://github.com/ishakhrukh/interpreter-tutorial/edit/gh-pages/index.md#parser)
-6. [Part Three: Understanding How the Virtual Machine Will Work](https://github.com/ishakhrukh/interpreter-tutorial/edit/gh-pages/index.md#vm)
-7. [Part Four: Code Generation](https://github.com/ishakhrukh/interpreter-tutorial/edit/gh-pages/index.md#code-generation)
-8. [Part Five: The Virtual Machine](https://github.com/ishakhrukh/interpreter-tutorial/edit/gh-pages/index.md#vm)
+1. [Introduction](introduction)
+2. [The Interpreter](the-interpreter)
+3. [Getting Starting](getting-started)
+4. [Part One: The Tokenizer](tokenizer)
+5. [Part Two: The Parser](#parser)
+6. [Part Three: Understanding How the Virtual Machine Will Work](#vm)
+7. [Part Four: Code Generation](#code-generation)
+8. [Part Five: The Virtual Machine](#vm)
 
 ### Introduction <a name="introduction"></a>
 In this tutorial, we will be making an interpreter for our own programming language with a sytax similar to Javascript.
