@@ -4,10 +4,10 @@
 By Ibrahim Shakhrukh
 
 ### Table of contents
-1. [Introduction](introduction)
-2. [The Interpreter](the-interpreter)
-3. [Getting Starting](getting-started)
-4. [Part One: The Tokenizer](tokenizer)
+1. [Introduction](#introduction)
+2. [The Interpreter](#the-interpreter)
+3. [Getting Starting](#getting-started)
+4. [Part One: The Tokenizer](#tokenizer)
 5. [Part Two: The Parser](#parser)
 6. [Part Three: Understanding How the Virtual Machine Will Work](#vm)
 7. [Part Four: Code Generation](#code-generation)
