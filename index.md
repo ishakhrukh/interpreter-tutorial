@@ -502,6 +502,7 @@ class AstType(Enum):
 Since we're interpreting a very basic program, these are all the node types we need. Now to define the base classes for our ASTs.
 
 > **_Note:_** the language you're programming in may not support classes or inheritance. In that case, you might want to create a union that holds all the AST structures.
+
 ```python
 class AstNode:
     type: AstType
@@ -594,6 +595,7 @@ class Name(Expression):
 Great, now that we have finished defining all our AST nodes, we can define our `Parser` class. It will only need two variables:
 - `source`: A `Tokenizer` that will feed the parser tokens.
 - `current`: The current token the parser is at.
+
 ```python
 class Parser:
     source: Tokenizer
@@ -706,6 +708,7 @@ def parseReturn(self) -> Statement:
     return Return(value)
 ```
 The code should've been pretty self-explanatory. Now for `Parser.parseAssignment()`. We'll use the following grammar for our language's assignment: `var <name> = <value>;`
+
 ```python
 def parseAssignment(self) -> Statement:
     self.expect(TokenType.VAR)
@@ -717,6 +720,7 @@ def parseAssignment(self) -> Statement:
     return Assignment(id, value)
 ```
 Now to move on to expressions. We'll do that by using three functions: `Parser.parseFactor()`, `Parser.parseTerm()` and `Parser.parseExpression()`.
+
 ```python
  def parseFactor(self) -> Expression:
     match self.current.type:
@@ -763,8 +767,11 @@ def parseExpression(self) -> Expression:
     
 ```
 And with that, we've finished our parser.
+
 #### Part 2.5: A (Not-So-Well Made) AST Printer
+
 This part is optional, but I will include a definition for an `AstPrinter` class that will print a list of ASTs that the parser generates. Since it's not a big part of the code it will be offered without explanation, but you should get the basic idea: (also, we finally utilize our `print_raw` instruction, yay)
+
 ```python
 class AstPrinter:
     def printAst(self, list: list[Statement]):
@@ -837,6 +844,7 @@ ldconst. 1  # load constant from index 1 in the constant pool
 add         # pop the two value on the top of the stack and push the result
 ```
 Let's see what each instruction does to the stack:
+
 |Top of Stack|
 |-|
 
@@ -876,6 +884,7 @@ class Instruction(Enum):
     ret = auto()
 ```
 Here is what each instruction will do:
+
 | Instruction | Operation |
 |-------------|-------------------------------------------------------------------|
 | ldconst (*i*) | Pushes constant at index *i* from the constant pool onto the stack. |
@@ -930,6 +939,7 @@ And now for our `Bytecode` class, which will contain the following variables:
 - `functions`: A list of `FunctionObjects` (functions).
 - `entrypoint`: The function to be executed when the interpreter runs.
 - `constant_pool`: A list of `RuntimeConstant`s that will act as the constant pool.
+
 ```python
 class Bytecode:
     functions: list[FunctionObject]
@@ -949,6 +959,7 @@ We can now get started on writing our compiler. It will have these variables:
 - `constants`: A list of `RuntimeConstant`s for `Instruction.ldconst` to load constants from.
 - `variable_map`: A list of variables so we can get their indexes to pass onto `Instruction.ldloc`. It will be cleared every time we visit a function AST.
 - `argument_map`: Same thing as `variable_map`, but for arguments.
+
 ```python
 class Compiler:
     tree: list[AstNode]
